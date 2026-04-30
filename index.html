@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>שורפים את הירושה - USA 2026</title>
-    
+
     <meta property="og:title" content="שורפים את הירושה - USA 2026" />
     <meta property="og:description" content="המסלול המלא והמעודכן לטיול המשפחתי בארה״ב" />
     <meta property="og:image" content="hero-family.png" />
@@ -42,7 +42,10 @@
             min-height: 100vh;
         }
 
-        .hero { padding: 14px; background: linear-gradient(135deg, var(--red), #dc6840); }
+        .hero {
+            padding: 14px;
+            background: linear-gradient(135deg, var(--red), #dc6840);
+        }
 
         .hero img {
             width: 100%;
@@ -125,15 +128,32 @@
 
         .body { padding: 16px; }
 
-        .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
 
-        .day, .date { border: 2px solid var(--brown); border-radius: 999px; padding: 5px 11px; font-weight: 900; }
+        .day, .date {
+            border: 2px solid var(--brown);
+            border-radius: 999px;
+            padding: 5px 11px;
+            font-weight: 900;
+        }
 
-        .day { background: var(--red); color: white; }
+        .day {
+            background: var(--red);
+            color: white;
+        }
 
         .date { background: var(--gold); }
 
-        h2 { margin: 12px 0; font-size: 25px; line-height: 1.15; }
+        h2 {
+            margin: 12px 0;
+            font-size: 25px;
+            line-height: 1.15;
+        }
 
         .box {
             background: var(--cream2);
@@ -147,7 +167,12 @@
 
         .box strong { color: var(--red); }
 
-        .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 11px; }
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 9px;
+            margin-top: 11px;
+        }
 
         .btn {
             text-align: center;
@@ -159,26 +184,70 @@
             font-weight: 900;
             text-decoration: none;
             box-shadow: 3px 3px 0 var(--shadow);
+            line-height: 1.2;
         }
 
         .btn.red { background: var(--red); }
 
-        footer { text-align: center; padding: 34px 14px 46px; font-weight: 900; font-size: 22px; }
-
-        @media(max-width:1050px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-
-        @media(max-width:640px) {
-            .app { max-width: 480px; border-left: 4px solid var(--brown); border-right: 4px solid var(--brown); }
-            .nav { position: static; justify-content: flex-start; border-bottom: none; }
-            .title { margin: 12px; font-size: 24px; }
-            .cards { display: block; padding: 0 0 22px; }
-            .card { margin: 15px 12px; border-width: 3px; box-shadow: 5px 5px 0 var(--shadow); }
-            .card:hover { transform: none; }
-            .card img { height: 190px; }
-            h2 { font-size: 22px; }
+        .btn.daily {
+            background: var(--gold);
+            color: var(--brown);
         }
 
-        @media(max-width:390px) { .actions { grid-template-columns: 1fr; } .card img { height: 170px; } }
+        footer {
+            text-align: center;
+            padding: 34px 14px 46px;
+            font-weight: 900;
+            font-size: 22px;
+        }
+
+        @media(max-width:1050px) {
+            .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media(max-width:640px) {
+            .app {
+                max-width: 480px;
+                border-left: 4px solid var(--brown);
+                border-right: 4px solid var(--brown);
+            }
+
+            .nav {
+                position: static;
+                justify-content: flex-start;
+                border-bottom: none;
+            }
+
+            .title {
+                margin: 12px;
+                font-size: 24px;
+            }
+
+            .cards {
+                display: block;
+                padding: 0 0 22px;
+            }
+
+            .card {
+                margin: 15px 12px;
+                border-width: 3px;
+                box-shadow: 5px 5px 0 var(--shadow);
+            }
+
+            .card:hover { transform: none; }
+
+            .card img { height: 190px; }
+
+            h2 { font-size: 22px; }
+
+            .actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:390px) {
+            .card img { height: 170px; }
+        }
     </style>
 </head>
 
@@ -190,13 +259,17 @@
 
         <nav class="nav">
             <a href="#days">המסלול</a>
+            <a href="daily.html">פירוט יומי מלא</a>
             <a href="#end">סיום</a>
         </nav>
 
         <div class="title" id="days">המסלול היומי</div>
         <main class="cards" id="cards"></main>
 
-        <footer id="end">שורפים את הירושה · USA 2026<br>גרסת פרימיום סופית</footer>
+        <footer id="end">
+            שורפים את הירושה · USA 2026<br>
+            גרסת פרימיום סופית
+        </footer>
     </div>
 
     <script>
@@ -236,20 +309,25 @@
                         <span class="day">יום ${i + 1}</span>
                         <span class="date">${d[0]}</span>
                     </div>
+
                     <h2>${d[1]}<br>${d[2]}</h2>
+
                     <div class="box"><strong>מלון:</strong> ${d[3]}</div>
                     <div class="box"><strong>טריוויה:</strong> ${d[4]}</div>
                     <div class="box"><strong>מסעדת VFM:</strong> ${d[5]}</div>
                     <div class="box"><strong>מזג אוויר צפוי במאי:</strong> ${d[6]}</div>
+
                     <div class="actions">
                         <a class="btn" target="_blank" rel="noopener noreferrer" href="${d[8]}">תחזית חיה</a>
                         <a class="btn red" target="_blank" rel="noopener noreferrer" href="${d[9]}">פתח במפה</a>
+                        <a class="btn daily" href="daily.html#d${i}">פירוט יומי</a>
                     </div>
                 </div>
             </article>
         `).join("");
 
         const hero = document.getElementById("heroImg");
+
         hero.onerror = function() {
             if (hero.src.includes("hero-family.png")) {
                 hero.src = "HERO-FAMILY.PNG";
