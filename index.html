@@ -1,234 +1,190 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>שורפים את הירושה - USA 2026</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --cream:#f7e6bd;
-  --paper:#fff1c7;
-  --turq:#0e9aa7;
-  --red:#b73325;
-  --dark:#24150e;
-  --ink:#2b1b12;
-  --yellow:#f2b84b;
-  --line:#5a321c;
-}
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:Heebo,Arial,sans-serif;
-  background:
-    radial-gradient(circle at top,#ffe9a9 0,#f4d28a 38%,#d79845 100%);
-  color:var(--ink);
+  background:#e9b95c;
+  color:#2b160d;
 }
-
 .app{
   max-width:480px;
-  margin:0 auto;
+  margin:auto;
+  background:#f7d98b;
   min-height:100vh;
-  background:#f7df9e;
-  border-left:4px solid var(--line);
-  border-right:4px solid var(--line);
+  border-left:4px solid #3b1d10;
+  border-right:4px solid #3b1d10;
 }
-
 .hero{
   padding:10px;
-  background:#e7b858;
+  background:#d8482f;
 }
-
 .hero img{
   width:100%;
   display:block;
-  border:4px solid var(--line);
+  border:4px solid #32170c;
   border-radius:18px;
-  box-shadow:0 8px 0 #8b3f24;
+  box-shadow:0 7px 0 #732819;
 }
-
 .intro{
-  margin:12px 10px 14px;
-  padding:14px;
-  background:var(--paper);
-  border:3px solid var(--line);
+  margin:12px;
+  background:#fff1bd;
+  border:3px solid #32170c;
   border-radius:18px;
-  box-shadow:5px 5px 0 #8b3f24;
+  padding:14px;
+  box-shadow:5px 5px 0 #7b351e;
 }
-
-.kicker{
+.badge{
   display:inline-block;
-  background:var(--turq);
+  background:#1596a3;
   color:white;
-  font-weight:900;
   padding:6px 12px;
+  border:2px solid #32170c;
   border-radius:999px;
-  border:2px solid var(--line);
-  transform:rotate(-2deg);
+  font-weight:900;
 }
-
 h1{
   margin:12px 0 8px;
-  font-size:32px;
-  line-height:1.05;
-  color:var(--red);
-  text-shadow:2px 2px 0 #fff0b6, 3px 3px 0 var(--line);
+  color:#b62f24;
+  font-size:34px;
+  line-height:1.03;
+  text-shadow:2px 2px 0 #fff4c3,3px 3px 0 #32170c;
 }
-
 .intro p{
   margin:0;
   font-size:16px;
   line-height:1.45;
-  font-weight:600;
+  font-weight:700;
 }
-
 .nav{
   display:flex;
   gap:8px;
-  overflow-x:auto;
-  padding:8px 10px 14px;
+  overflow:auto;
+  padding:0 12px 12px;
 }
-
 .nav a{
-  flex:0 0 auto;
-  background:var(--red);
+  background:#1596a3;
   color:white;
-  padding:8px 12px;
+  border:2px solid #32170c;
   border-radius:999px;
-  border:2px solid var(--line);
+  padding:8px 13px;
   font-weight:900;
-  box-shadow:3px 3px 0 #5b271a;
+  white-space:nowrap;
+  box-shadow:3px 3px 0 #7b351e;
 }
-
-.section-title{
-  margin:10px;
+.title{
+  margin:12px;
   padding:10px 12px;
-  background:var(--turq);
+  background:#b62f24;
   color:white;
-  border:3px solid var(--line);
+  border:3px solid #32170c;
   border-radius:16px;
-  box-shadow:4px 4px 0 #6b341f;
-  font-size:23px;
+  font-size:24px;
   font-weight:900;
+  box-shadow:4px 4px 0 #7b351e;
 }
-
 .card{
-  margin:14px 10px;
-  background:#fff3c8;
-  border:3px solid var(--line);
+  margin:14px 12px;
+  background:#fff1bd;
+  border:3px solid #32170c;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:6px 6px 0 #7c3b22;
+  box-shadow:6px 6px 0 #7b351e;
 }
-
-.card img{
-  width:100%;
-  height:170px;
-  object-fit:cover;
-  display:block;
-  border-bottom:3px solid var(--line);
-  background:#ddb25a;
+.illus{
+  height:155px;
+  border-bottom:3px solid #32170c;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
 }
-
-.card-body{
-  padding:13px;
+.illus:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 80% 20%,#fff5b8 0 11%,transparent 12%),
+    linear-gradient(135deg,var(--c1),var(--c2));
 }
-
-.dayline{
+.illus:after{
+  content:attr(data-icon);
+  position:relative;
+  font-size:72px;
+  filter:drop-shadow(4px 4px 0 rgba(0,0,0,.25));
+}
+.card-body{padding:13px}
+.top{
   display:flex;
   justify-content:space-between;
-  gap:8px;
   align-items:center;
-  margin-bottom:8px;
+  gap:8px;
 }
-
-.daynum{
-  background:var(--red);
-  color:white;
-  border:2px solid var(--line);
+.day,.date{
+  border:2px solid #32170c;
   border-radius:999px;
   padding:5px 10px;
   font-weight:900;
 }
-
-.date{
-  background:var(--yellow);
-  border:2px solid var(--line);
-  border-radius:999px;
-  padding:5px 10px;
-  font-weight:900;
-}
-
+.day{background:#b62f24;color:white}
+.date{background:#f5bb3d}
 h2{
-  margin:8px 0;
+  margin:10px 0;
   font-size:22px;
   line-height:1.15;
 }
-
 .box{
-  background:#fff9df;
-  border:2px dashed #8a5130;
+  background:#fff8db;
+  border:2px dashed #8b4a2a;
   border-radius:14px;
   padding:9px;
   margin-top:8px;
-  line-height:1.45;
   font-size:15px;
+  line-height:1.45;
 }
-
-.box strong{
-  color:var(--red);
-}
-
+.box strong{color:#b62f24}
 .actions{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:8px;
   margin-top:10px;
 }
-
 .btn{
   text-align:center;
-  background:var(--turq);
+  background:#1596a3;
   color:white;
-  border:2px solid var(--line);
+  border:2px solid #32170c;
   border-radius:14px;
-  padding:9px 8px;
+  padding:9px;
   font-weight:900;
-  box-shadow:3px 3px 0 #5b271a;
+  box-shadow:3px 3px 0 #7b351e;
+  text-decoration:none;
 }
-
-.btn.alt{
-  background:var(--red);
-}
-
-.hotel-list{
-  margin:10px;
-  display:grid;
-  gap:10px;
-}
-
+.btn.red{background:#b62f24}
 .hotel{
-  background:#fff3c8;
-  border:3px solid var(--line);
+  margin:10px 12px;
+  background:#fff1bd;
+  border:3px solid #32170c;
   border-radius:16px;
   padding:11px;
-  box-shadow:4px 4px 0 #7c3b22;
-  line-height:1.4;
+  font-weight:700;
+  box-shadow:4px 4px 0 #7b351e;
 }
-
-.footer{
+footer{
   text-align:center;
-  padding:24px 12px 35px;
-  font-weight:800;
+  padding:28px 14px 36px;
+  font-weight:900;
 }
-
 @media(max-width:390px){
-  h1{font-size:29px}
-  .card img{height:155px}
+  h1{font-size:30px}
   .actions{grid-template-columns:1fr}
 }
 </style>
@@ -237,259 +193,111 @@ h2{
 <body>
 <div class="app">
 
-  <header class="hero">
-    <img src="HERO-FAMILY.PNG" alt="שורפים את הירושה USA 2026">
-  </header>
+<header class="hero">
+  <img id="heroImg" src="HERO-FAMILY.PNG" alt="שורפים את הירושה USA 2026">
+</header>
 
-  <section class="intro">
-    <span class="kicker">Mobile Edition · Retro USA</span>
-    <h1>שורפים את הירושה<br>USA 2026</h1>
-    <p>
-      מסע משפחתי מחוף לחוף: קליפורניה, יוסמיטי, וגאס, ניו אורלינס,
-      וושינגטון, פנסילבניה וניו יורק — עם טריוויה, מסעדות VFM,
-      וכפתור מזג אוויר חי לכל יעד.
-    </p>
-  </section>
+<section class="intro">
+  <span class="badge">Mobile Retro Edition</span>
+  <h1>שורפים את הירושה<br>USA 2026</h1>
+  <p>
+    מסע משפחתי מחוף לחוף — קליפורניה, יוסמיטי, וגאס, ניו אורלינס,
+    וושינגטון, פנסילבניה וניו יורק. לכל יום: טריוויה, מסעדת VFM,
+    מזג אוויר חי ומפה.
+  </p>
+</section>
 
-  <nav class="nav">
-    <a href="#days">ימים</a>
-    <a href="#hotels">מלונות</a>
-    <a href="#end">סיום</a>
-  </nav>
+<nav class="nav">
+  <a href="#days">ימים</a>
+  <a href="#hotels">מלונות</a>
+  <a href="#end">סיום</a>
+</nav>
 
-  <div class="section-title" id="days">המסלול היומי</div>
-  <main id="cards"></main>
+<div class="title" id="days">המסלול היומי</div>
+<main id="cards"></main>
 
-  <div class="section-title" id="hotels">מלונות בפועל</div>
-  <section class="hotel-list">
-    <div class="hotel"><b>03–06.05</b><br>Sofitel LA at Beverly Hills</div>
-    <div class="hotel"><b>06–07.05</b><br>Kimpton Canary Hotel, Santa Barbara</div>
-    <div class="hotel"><b>07–08.05</b><br>Blue Dolphin Inn, Cambria</div>
-    <div class="hotel"><b>08–10.05</b><br>Little European Lodge, Carmel Valley</div>
-    <div class="hotel"><b>10–12.05</b><br>The Redwoods In Yosemite</div>
-    <div class="hotel"><b>12–13.05</b><br>California Inn, Barstow</div>
-    <div class="hotel"><b>13–16.05</b><br>Park MGM Las Vegas</div>
-    <div class="hotel"><b>16–18.05</b><br>Le Marais, New Orleans</div>
-    <div class="hotel"><b>18–19.05</b><br>Hotel Hive, Washington DC</div>
-    <div class="hotel"><b>19–20.05</b><br>Lititz Pointe Inn and Suites</div>
-    <div class="hotel"><b>20–21.05</b><br>Courtyard Edgewater NYC Area</div>
-    <div class="hotel"><b>21–25.05</b><br>Hotel Indigo Lower East Side NYC</div>
-  </section>
+<div class="title" id="hotels">מלונות בפועל</div>
+<section id="hotelList"></section>
 
-  <footer class="footer" id="end">
-    שורפים את הירושה · USA 2026<br>
-    כי כסף בא והולך, אבל תמונה ב־HERO נשארת.
-  </footer>
+<footer id="end">
+  שורפים את הירושה · USA 2026<br>
+  כסף בא והולך, אבל סטוריז נשארים.
+</footer>
 
 </div>
 
 <script>
 const days = [
-{
-date:"03.05", place:"לוס אנג'לס", title:"נחיתה והתאקלמות בבוורלי הילס",
-trivia:"בוורלי הילס התחילה כאזור חקלאי לפני שהפכה לסמל של הוליווד ויוקרה.",
-food:"The Cheesecake Factory Beverly Hills — VFM משפחתי, תפריט ענק, לא יוקרתי בקצה.",
-photo:"https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/us/california/city/los-angeles/tenday",
-map:"https://www.google.com/maps/search/?api=1&query=Beverly+Hills+California"
-},
-{
-date:"04.05", place:"לוס אנג'לס", title:"הוליווד, The Grove ושדרת הכוכבים",
-trivia:"בשדרת הכוכבים יש אלפי כוכבים, אבל הכוכב האמיתי הוא מי שמוצא חניה.",
-food:"Farmers Market at The Grove — הרבה דוכנים, מתאים למשפחה ונותן VFM מעולה.",
-photo:"https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/us/california/city/los-angeles/tenday",
-map:"https://www.google.com/maps/search/?api=1&query=The+Grove+Los+Angeles"
-},
-{
-date:"05.05", place:"סנטה מוניקה", title:"חוף, מזח ווניס",
-trivia:"מזח סנטה מוניקה הוא נקודת הסיום הסמלית של Route 66.",
-food:"Bay Cities Italian Deli — סנדוויצ'ים מפורסמים, טעים וזול יחסית לאזור.",
-photo:"https://images.unsplash.com/photo-1542213493895-edf5b94f5a96?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Santa+Monica+California",
-map:"https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier"
-},
-{
-date:"06.05", place:"סנטה ברברה", title:"נסיעה צפונה ועיר החוף",
-trivia:"סנטה ברברה מכונה American Riviera בזכות החופים והאדריכלות הספרדית.",
-food:"Los Agaves — מקסיקנית פופולרית ומדורגת מאוד, VFM חזק.",
-photo:"https://images.unsplash.com/photo-1575923825557-7d2d7f113d8e?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Santa+Barbara+California",
-map:"https://www.google.com/maps/search/?api=1&query=Santa+Barbara+California"
-},
-{
-date:"07.05", place:"קמבריה", title:"כביש 1 ו־Moonstone Beach",
-trivia:"Moonstone Beach נקרא על שם האבנים החלקות והמבריקות שעל החוף.",
-food:"Linn's Restaurant — מוסד מקומי, ביתי, טעים ולא פלצני.",
-photo:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Cambria+California",
-map:"https://www.google.com/maps/search/?api=1&query=Moonstone+Beach+Cambria"
-},
-{
-date:"08.05", place:"כרמל ואלי", title:"מונטריי, כרמל ו־17 Mile Drive",
-trivia:"17 Mile Drive נחשב אחד הכבישים הנופיים המפורסמים בקליפורניה.",
-food:"Cafe Rustica — מקומי, חם ומשפחתי, VFM טוב לאזור.",
-photo:"https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Carmel+Valley+California",
-map:"https://www.google.com/maps/search/?api=1&query=17+Mile+Drive+California"
-},
-{
-date:"09.05", place:"מונטריי / כרמל", title:"יום רגוע באזור החוף",
-trivia:"קלינט איסטווד היה בעבר ראש העיר של Carmel-by-the-Sea.",
-food:"Hula's Island Grill Monterey — קליל, מנות גדולות, משפחתי ו־VFM.",
-photo:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Monterey+California",
-map:"https://www.google.com/maps/search/?api=1&query=Monterey+California"
-},
-{
-date:"10.05", place:"יוסמיטי", title:"כניסה לפארק ולינה בוואונה",
-trivia:"יוסמיטי השפיע מאוד על רעיון הפארקים הלאומיים בארה״ב.",
-food:"Little Bear Pizza — פתרון פשוט וטוב באזור עם מבחר מוגבל.",
-photo:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Yosemite+National+Park+California",
-map:"https://www.google.com/maps/search/?api=1&query=Yosemite+National+Park"
-},
-{
-date:"11.05", place:"יוסמיטי", title:"עמק יוסמיטי, מפלים ותצפיות",
-trivia:"Yosemite Falls הוא אחד המפלים הגבוהים בצפון אמריקה.",
-food:"Curry Village Pizza Deck — נוח, משפחתי ומתאים ליום פארק.",
-photo:"https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Yosemite+National+Park+California",
-map:"https://www.google.com/maps/search/?api=1&query=Yosemite+Valley"
-},
-{
-date:"12.05", place:"ברסטו", title:"Route 66 ונסיעת מדבר",
-trivia:"ברסטו הייתה תחנה חשובה על Route 66 ההיסטורית.",
-food:"Lola's Kitchen — מקומי, פשוט, מדורג טוב ועושה את העבודה.",
-photo:"https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Barstow+California",
-map:"https://www.google.com/maps/search/?api=1&query=Barstow+California"
-},
-{
-date:"13.05", place:"לאס וגאס", title:"הגעה לסטריפ",
-trivia:"חלק גדול מהסטריפ בכלל נמצא באזור Paradise ולא רשמית בעיר לאס וגאס.",
-food:"Eataly at Park MGM — הרבה אפשרויות, טוב למשפחה ויחסית VFM לסטריפ.",
-photo:"https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Las+Vegas+Nevada",
-map:"https://www.google.com/maps/search/?api=1&query=Park+MGM+Las+Vegas"
-},
-{
-date:"14.05", place:"לאס וגאס", title:"מלונות, אטרקציות ושופינג",
-trivia:"בלאס וגאס יש ריכוז עצום של חדרי מלון — העיר בנויה שתישארו עוד לילה.",
-food:"Chin Chin — קרוב ל־Park MGM, מדורג טוב וסביר ביחס לסטריפ.",
-photo:"https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Las+Vegas+Nevada",
-map:"https://www.google.com/maps/search/?api=1&query=Las+Vegas+Strip"
-},
-{
-date:"15.05", place:"לאס וגאס", title:"יום חופשי / מופע / אאוטלט",
-trivia:"הקזינו בנוי בלי תחושת זמן. הכרטיס אשראי דווקא מרגיש הכול.",
-food:"Nacho Daddy — מנות גדולות, אווירה כיפית ו־VFM טוב.",
-photo:"https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Las+Vegas+Nevada",
-map:"https://www.google.com/maps/search/?api=1&query=Las+Vegas+Premium+Outlets"
-},
-{
-date:"16.05", place:"ניו אורלינס", title:"טיסה והגעה לרובע הצרפתי",
-trivia:"ניו אורלינס נחשבת אחד ממקומות הלידה המרכזיים של הג׳אז.",
-food:"Verti Marte — מוסד מקומי זול יחסית, סנדוויצ'ים ואוכל לקחת.",
-photo:"https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+Orleans+Louisiana",
-map:"https://www.google.com/maps/search/?api=1&query=French+Quarter+New+Orleans"
-},
-{
-date:"17.05", place:"ניו אורלינס", title:"French Quarter ומוזיקה",
-trivia:"למרות השם French Quarter, חלק מהאדריכלות המפורסמת בו דווקא ספרדית.",
-food:"Oceana Grill — פופולרית, מיקום נוח, תפריט גדול וקז'ואלי.",
-photo:"https://images.unsplash.com/photo-1597000745628-2396ba242c00?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+Orleans+Louisiana",
-map:"https://www.google.com/maps/search/?api=1&query=Bourbon+Street+New+Orleans"
-},
-{
-date:"18.05", place:"וושינגטון DC", title:"הגעה וסיבוב ערב",
-trivia:"וושינגטון DC היא מחוז פדרלי ולא מדינה בארה״ב.",
-food:"Founding Farmers DC — פופולרית, נגישה, משפחתית ולא יוקרתית מדי.",
-photo:"https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Washington+District+of+Columbia",
-map:"https://www.google.com/maps/search/?api=1&query=National+Mall+Washington+DC"
-},
-{
-date:"19.05", place:"ליטיץ", title:"פנסילבניה ועיירה קטנה",
-trivia:"ליטיץ ידועה כאחת העיירות ההיסטוריות והמקסימות באזור Lancaster County.",
-food:"Tomato Pie Cafe — מקומי, נעים, מחירים הגיוניים ואווירה משפחתית.",
-photo:"https://images.unsplash.com/photo-1609690949798-09c934bf7215?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Lititz+Pennsylvania",
-map:"https://www.google.com/maps/search/?api=1&query=Lititz+Pennsylvania"
-},
-{
-date:"20.05", place:"אדג'ווטר", title:"קו הרקיע של מנהטן",
-trivia:"אדג'ווטר נותנת נוף למנהטן בלי לשלם מחיר של מנהטן. כמעט חיסכון.",
-food:"Mitsuwa Marketplace — מתחם יפני עם כמה אופציות אוכל ו־VFM מצוין.",
-photo:"https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/Edgewater+New+Jersey",
-map:"https://www.google.com/maps/search/?api=1&query=Edgewater+New+Jersey"
-},
-{
-date:"21.05", place:"ניו יורק", title:"Lower East Side",
-trivia:"Lower East Side היה שער כניסה היסטורי למהגרים רבים לארה״ב.",
-food:"Doughnut Plant — מוסד מתוקים מקומי, מושלם לעצירה בלי לפשוט רגל.",
-photo:"https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+York+New+York",
-map:"https://www.google.com/maps/search/?api=1&query=Lower+East+Side+New+York"
-},
-{
-date:"22.05", place:"ניו יורק", title:"דאונטאון, סוהו או ברוקלין",
-trivia:"הסאבווי בניו יורק פועל 24/7 — בתיאוריה. בפועל, תמיד יש הפתעה.",
-food:"Vanessa's Dumpling House — זול, מהיר, טעים ו־VFM ניו יורקי קלאסי.",
-photo:"https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+York+New+York",
-map:"https://www.google.com/maps/search/?api=1&query=SoHo+New+York"
-},
-{
-date:"23.05", place:"ניו יורק", title:"סנטרל פארק / מוזיאון / שופינג",
-trivia:"סנטרל פארק נראה טבעי, אבל תוכנן ועוצב בקפדנות עצומה.",
-food:"Joe's Pizza — פיצה ניו יורקית קלאסית, מהירה וזולה יחסית.",
-photo:"https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+York+New+York",
-map:"https://www.google.com/maps/search/?api=1&query=Central+Park+New+York"
-},
-{
-date:"24.05", place:"ניו יורק", title:"יום אחרון מלא בעיר",
-trivia:"פסל החירות היה מתנה מצרפת, אבל התורים הם כבר תרומה אמריקאית.",
-food:"Katz's Delicatessen — לא הכי זול, אבל מנות ענק וחוויה אייקונית.",
-photo:"https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+York+New+York",
-map:"https://www.google.com/maps/search/?api=1&query=Katzs+Delicatessen+New+York"
-},
-{
-date:"25.05", place:"ניו יורק", title:"סיום, אריזות וחזרה",
-trivia:"ניו יורק היא העיר שלא ישנה לעולם, אבל צ'ק־אאוט עדיין מגיע בזמן.",
-food:"Russ & Daughters / Bagel breakfast — בוקר ניו יורקי קלאסי לפני עזיבה.",
-photo:"https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=900&q=80",
-weather:"https://weather.com/weather/tenday/l/New+York+New+York",
-map:"https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+Lower+East+Side+New+York"
-}
+["03.05","לוס אנג'לס","נחיתה והתאקלמות בבוורלי הילס","בוורלי הילס התחילה כאזור חקלאי לפני שהפכה לסמל של הוליווד.","The Cheesecake Factory Beverly Hills — משפחתי, תפריט ענק, VFM נוח.","🌴","#16a1b1","#f5bd45","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Beverly+Hills+California"],
+["04.05","לוס אנג'לס","הוליווד, The Grove ושדרת הכוכבים","בשדרת הכוכבים יש אלפי כוכבים, אבל הכוכב האמיתי הוא מי שמוצא חניה.","Farmers Market at The Grove — הרבה דוכנים, פתרון מעולה למשפחה.","🎬","#d8462e","#f4c04a","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=The+Grove+Los+Angeles"],
+["05.05","סנטה מוניקה","חוף, מזח ווניס","מזח סנטה מוניקה הוא נקודת הסיום הסמלית של Route 66.","Bay Cities Italian Deli — סנדוויצ'ים מפורסמים וזולים יחסית.","🎡","#1596a3","#f2b84b","https://weather.com/weather/tenday/l/Santa+Monica+California","https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier"],
+["06.05","סנטה ברברה","נסיעה צפונה ועיר החוף","סנטה ברברה מכונה American Riviera.","Los Agaves — מקסיקנית פופולרית, מדורגת ו־VFM חזק.","🏖️","#0e9aa7","#e55b35","https://weather.com/weather/tenday/l/Santa+Barbara+California","https://www.google.com/maps/search/?api=1&query=Santa+Barbara+California"],
+["07.05","קמבריה","כביש 1 ו־Moonstone Beach","החוף נקרא על שם האבנים המבריקות שלאורכו.","Linn's Restaurant — מוסד מקומי, ביתי ולא פלצני.","🌊","#277da1","#f9c74f","https://weather.com/weather/tenday/l/Cambria+California","https://www.google.com/maps/search/?api=1&query=Moonstone+Beach+Cambria"],
+["08.05","כרמל ואלי","מונטריי, כרמל ו־17 Mile Drive","זה אחד מכבישי הנוף המפורסמים בקליפורניה.","Cafe Rustica — מקומי, חם, משפחתי ויחסית משתלם.","🌲","#386641","#f2cc8f","https://weather.com/weather/tenday/l/Carmel+Valley+California","https://www.google.com/maps/search/?api=1&query=17+Mile+Drive+California"],
+["09.05","מונטריי / כרמל","יום רגוע באזור החוף","קלינט איסטווד היה בעבר ראש העיר של Carmel-by-the-Sea.","Hula's Island Grill — מנות גדולות, קליל ומשפחתי.","🏝️","#2a9d8f","#e9c46a","https://weather.com/weather/tenday/l/Monterey+California","https://www.google.com/maps/search/?api=1&query=Monterey+California"],
+["10.05","יוסמיטי","כניסה לפארק ולינה בוואונה","יוסמיטי השפיע על רעיון הפארקים הלאומיים בארה״ב.","Little Bear Pizza — פשוט, נוח וטוב באזור עם מבחר מוגבל.","🏞️","#588157","#dda15e","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+National+Park"],
+["11.05","יוסמיטי","עמק יוסמיטי, מפלים ותצפיות","Yosemite Falls הוא מהמפלים הגבוהים בצפון אמריקה.","Curry Village Pizza Deck — נוח ומשפחתי ליום פארק.","💦","#457b9d","#a8dadc","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+Valley"],
+["12.05","ברסטו","Route 66 ונסיעת מדבר","ברסטו הייתה תחנה חשובה על Route 66.","Lola's Kitchen — מקומי, פשוט, מדורג טוב ועושה את העבודה.","🏜️","#bc6c25","#fefae0","https://weather.com/weather/tenday/l/Barstow+California","https://www.google.com/maps/search/?api=1&query=Barstow+California"],
+["13.05","לאס וגאס","הגעה לסטריפ","חלק גדול מהסטריפ נמצא באזור Paradise ולא בעיר לאס וגאס עצמה.","Eataly at Park MGM — הרבה אפשרויות ו־VFM יחסי לסטריפ.","🎰","#7209b7","#f72585","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Park+MGM+Las+Vegas"],
+["14.05","לאס וגאס","מלונות, אטרקציות ושופינג","וגאס בנויה לגרום לך להישאר עוד לילה.","Chin Chin — קרוב ל־Park MGM, סביר ומדורג טוב.","💡","#3a0ca3","#f77f00","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Strip"],
+["15.05","לאס וגאס","יום חופשי / מופע / אאוטלט","בקזינו אין תחושת זמן. הכרטיס אשראי כן מרגיש הכול.","Nacho Daddy — מנות גדולות, כיפי ו־VFM טוב.","🃏","#9d0208","#ffba08","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Premium+Outlets"],
+["16.05","ניו אורלינס","טיסה והרובע הצרפתי","ניו אורלינס נחשבת לאחד ממקומות הלידה של הג׳אז.","Verti Marte — מקומי, זול יחסית, סנדוויצ'ים ואוכל לקחת.","🎷","#006d77","#e29578","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=French+Quarter+New+Orleans"],
+["17.05","ניו אורלינס","French Quarter ומוזיקה","למרות השם, חלק מהאדריכלות ברובע היא דווקא ספרדית.","Oceana Grill — פופולרית, קז'ואלית ותפריט גדול.","🎺","#8d0801","#f4d58d","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=Bourbon+Street+New+Orleans"],
+["18.05","וושינגטון DC","הגעה וסיבוב ערב","וושינגטון DC היא מחוז פדרלי ולא מדינה.","Founding Farmers — פופולרית, משפחתית ולא יוקרתית מדי.","🏛️","#003049","#f77f00","https://weather.com/weather/tenday/l/Washington+District+of+Columbia","https://www.google.com/maps/search/?api=1&query=National+Mall+Washington+DC"],
+["19.05","ליטיץ","פנסילבניה ועיירה קטנה","ליטיץ היא עיירה היסטורית מקסימה באזור Lancaster County.","Tomato Pie Cafe — מקומי, נעים וידידותי לכיס.","🥨","#606c38","#dda15e","https://weather.com/weather/tenday/l/Lititz+Pennsylvania","https://www.google.com/maps/search/?api=1&query=Lititz+Pennsylvania"],
+["20.05","אדג'ווטר","קו הרקיע של מנהטן","אדג'ווטר נותנת נוף למנהטן בלי מחיר של מנהטן.","Mitsuwa Marketplace — מתחם יפני עם VFM מצוין.","🌉","#1d3557","#a8dadc","https://weather.com/weather/tenday/l/Edgewater+New+Jersey","https://www.google.com/maps/search/?api=1&query=Edgewater+New+Jersey"],
+["21.05","ניו יורק","Lower East Side","האזור היה שער כניסה היסטורי למהגרים רבים לארה״ב.","Doughnut Plant — מתוקים מעולים בלי לפשוט רגל.","🗽","#264653","#e76f51","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Lower+East+Side+New+York"],
+["22.05","ניו יורק","דאונטאון, סוהו או ברוקלין","הסאבווי פועל 24/7 — בתיאוריה, כי תמיד יש הפתעה.","Vanessa's Dumpling House — זול, מהיר וטעים.","🚇","#2b2d42","#ef233c","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=SoHo+New+York"],
+["23.05","ניו יורק","סנטרל פארק / מוזיאון / שופינג","סנטרל פארק נראה טבעי, אבל תוכנן בקפדנות.","Joe's Pizza — קלאסיקה ניו יורקית מהירה ומשתלמת.","🍕","#118ab2","#ffd166","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Central+Park+New+York"],
+["24.05","ניו יורק","יום אחרון מלא בעיר","פסל החירות היה מתנה מצרפת, התורים הם כבר אמריקה.","Katz's Delicatessen — לא הכי זול, אבל מנות ענק וחוויה.","🥪","#073b4c","#f4a261","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Katzs+Delicatessen+New+York"],
+["25.05","ניו יורק","סיום, אריזות וחזרה","העיר שלא ישנה לעולם עדיין דורשת צ'ק־אאוט בזמן.","Russ & Daughters / Bagel breakfast — בוקר ניו יורקי קלאסי.","✈️","#14213d","#fca311","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+Lower+East+Side+New+York"]
 ];
 
 document.getElementById("cards").innerHTML = days.map((d,i)=>`
 <article class="card">
-  <img src="${d.photo}" alt="${d.place}" loading="lazy"
-       onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80';">
+  <div class="illus" style="--c1:${d[6]};--c2:${d[7]}" data-icon="${d[5]}"></div>
   <div class="card-body">
-    <div class="dayline">
-      <span class="daynum">יום ${i+1}</span>
-      <span class="date">${d.date}</span>
+    <div class="top">
+      <span class="day">יום ${i+1}</span>
+      <span class="date">${d[0]}</span>
     </div>
-    <h2>${d.place}<br>${d.title}</h2>
-    <div class="box"><strong>טריוויה:</strong> ${d.trivia}</div>
-    <div class="box"><strong>מסעדת VFM:</strong> ${d.food}</div>
+    <h2>${d[1]}<br>${d[2]}</h2>
+    <div class="box"><strong>טריוויה:</strong> ${d[3]}</div>
+    <div class="box"><strong>מסעדת VFM:</strong> ${d[4]}</div>
     <div class="actions">
-      <a class="btn" href="${d.weather}" target="_blank">מזג אוויר חי</a>
-      <a class="btn alt" href="${d.map}" target="_blank">פתח במפה</a>
+      <a class="btn" target="_blank" href="${d[8]}">מזג אוויר</a>
+      <a class="btn red" target="_blank" href="${d[9]}">פתח במפה</a>
     </div>
   </div>
 </article>
 `).join("");
+
+const hotels = [
+"03–06.05 · Sofitel LA at Beverly Hills",
+"06–07.05 · Kimpton Canary Hotel, Santa Barbara",
+"07–08.05 · Blue Dolphin Inn, Cambria",
+"08–10.05 · Little European Lodge, Carmel Valley",
+"10–12.05 · The Redwoods In Yosemite",
+"12–13.05 · California Inn, Barstow",
+"13–16.05 · Park MGM Las Vegas",
+"16–18.05 · Le Marais, New Orleans",
+"18–19.05 · Hotel Hive, Washington DC",
+"19–20.05 · Lititz Pointe Inn and Suites",
+"20–21.05 · Courtyard Edgewater NYC Area",
+"21–25.05 · Hotel Indigo Lower East Side NYC"
+];
+
+document.getElementById("hotelList").innerHTML =
+hotels.map(h=>`<div class="hotel">${h}</div>`).join("");
+
+const hero = document.getElementById("heroImg");
+hero.onerror = function(){
+  if(hero.src.includes("HERO-FAMILY.PNG")){
+    hero.src = "hero-family.png";
+  } else {
+    hero.style.display = "none";
+  }
+};
 </script>
 
 </body>
