@@ -4,228 +4,268 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>שורפים את הירושה - USA 2026</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800;900&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --red:#b83225;
+  --red2:#7d2419;
+  --blue:#118f9c;
+  --cream:#fff1bd;
+  --cream2:#fff8db;
+  --gold:#f4bd45;
+  --brown:#32170c;
+  --shadow:#7b351e;
+  --bg:#e5b75b;
+}
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:Heebo,Arial,sans-serif;
-  background:#e5b75b;
+  background:
+    radial-gradient(circle at top,#ffe29b 0,#e5b75b 45%,#be7535 100%);
+  color:#25150c;
 }
-
-/* CONTAINER */
 .app{
-  max-width:1200px;
+  width:100%;
+  max-width:1320px;
   margin:auto;
   background:#f7d98b;
   min-height:100vh;
 }
-
-/* HERO - FIXED */
 .hero{
-  padding:12px;
-  background:#b83225;
+  padding:14px;
+  background:linear-gradient(135deg,var(--red),#dc6840);
 }
-
 .hero img{
   width:100%;
-  height:auto;            /* חשוב — לא חותך */
-  object-fit:contain;     /* מציג הכל */
+  height:auto;
+  object-fit:contain;
   display:block;
-  border:5px solid #32170c;
-  border-radius:20px;
-  box-shadow:0 8px 0 #6e2819;
-  background:#f7d98b;     /* אם יש שוליים */
-}
-
-/* NAV */
-.nav{
-  display:flex;
-  gap:10px;
-  overflow:auto;
-  padding:12px;
+  border:5px solid var(--brown);
+  border-radius:26px;
+  box-shadow:0 10px 0 var(--red2),0 20px 40px rgba(0,0,0,.25);
   background:#f7d98b;
 }
-
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  overflow:auto;
+  padding:13px 16px;
+  background:rgba(247,217,139,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:4px solid var(--brown);
+}
 .nav a{
-  background:#1398a6;
+  background:var(--blue);
   color:white;
-  border:2px solid #32170c;
+  border:2px solid var(--brown);
   border-radius:999px;
-  padding:8px 14px;
+  padding:9px 16px;
   font-weight:900;
   text-decoration:none;
   white-space:nowrap;
-  box-shadow:3px 3px 0 #7b351e;
+  box-shadow:3px 3px 0 var(--shadow);
 }
-
-/* TITLE */
 .title{
-  margin:14px;
-  padding:10px 14px;
-  background:#b83225;
+  margin:26px 18px 18px;
+  padding:14px 18px;
+  background:var(--red);
   color:white;
-  border:3px solid #32170c;
-  border-radius:16px;
-  font-size:24px;
+  border:4px solid var(--brown);
+  border-radius:20px;
+  font-size:32px;
   font-weight:900;
-  box-shadow:4px 4px 0 #7b351e;
+  box-shadow:6px 6px 0 var(--shadow);
 }
-
-/* GRID */
 .cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  padding:0 14px 20px;
+  gap:24px;
+  padding:0 20px 34px;
 }
-
-/* CARD */
 .card{
-  background:#fff1bd;
-  border:3px solid #32170c;
-  border-radius:18px;
+  background:var(--cream);
+  border:4px solid var(--brown);
+  border-radius:24px;
   overflow:hidden;
-  box-shadow:5px 5px 0 #7b351e;
+  box-shadow:8px 8px 0 var(--shadow),0 12px 30px rgba(0,0,0,.15);
+  transition:.2s ease;
 }
-
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:10px 12px 0 var(--shadow),0 18px 40px rgba(0,0,0,.22);
+}
 .card img{
   width:100%;
-  height:200px;
+  height:235px;
   object-fit:cover;
-  border-bottom:3px solid #32170c;
+  display:block;
+  border-bottom:4px solid var(--brown);
+  background:#d6a84d;
 }
-
-.body{padding:12px}
-
+.body{padding:16px}
 .top{
   display:flex;
   justify-content:space-between;
-  margin-bottom:6px;
+  align-items:center;
+  gap:8px;
 }
-
 .day,.date{
-  border:2px solid #32170c;
+  border:2px solid var(--brown);
   border-radius:999px;
-  padding:4px 10px;
+  padding:5px 11px;
   font-weight:900;
 }
-
-.day{background:#b83225;color:white}
-.date{background:#f5bb3d}
-
+.day{background:var(--red);color:white}
+.date{background:var(--gold)}
 h2{
-  margin:8px 0;
-  font-size:20px;
+  margin:12px 0;
+  font-size:25px;
+  line-height:1.15;
 }
-
 .box{
-  background:#fff8db;
+  background:var(--cream2);
   border:2px dashed #8b4a2a;
-  border-radius:12px;
-  padding:8px;
-  margin-top:6px;
-  font-size:14px;
+  border-radius:15px;
+  padding:10px;
+  margin-top:9px;
+  font-size:15px;
+  line-height:1.48;
 }
-
-.box strong{color:#b83225}
-
+.box strong{color:var(--red)}
 .actions{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:6px;
-  margin-top:8px;
+  gap:9px;
+  margin-top:11px;
 }
-
 .btn{
   text-align:center;
-  background:#1398a6;
+  background:var(--blue);
   color:white;
-  border:2px solid #32170c;
-  border-radius:12px;
-  padding:8px;
+  border:2px solid var(--brown);
+  border-radius:14px;
+  padding:10px;
   font-weight:900;
   text-decoration:none;
+  box-shadow:3px 3px 0 var(--shadow);
 }
-
-.btn.red{background:#b83225}
-
-/* MOBILE */
-@media(max-width:900px){
+.btn.red{background:var(--red)}
+footer{
+  text-align:center;
+  padding:34px 14px 46px;
+  font-weight:900;
+  font-size:22px;
+}
+@media(max-width:1050px){
   .cards{grid-template-columns:repeat(2,1fr)}
 }
-
-@media(max-width:600px){
-  .cards{
-    grid-template-columns:1fr;
-    padding:0;
+@media(max-width:640px){
+  .app{
+    max-width:480px;
+    border-left:4px solid var(--brown);
+    border-right:4px solid var(--brown);
   }
+  .hero{padding:10px}
+  .hero img{border-radius:18px}
+  .nav{position:static;justify-content:flex-start;border-bottom:none}
+  .title{margin:12px;font-size:24px}
+  .cards{display:block;padding:0 0 22px}
   .card{
-    margin:12px;
+    margin:15px 12px;
+    border-width:3px;
+    box-shadow:5px 5px 0 var(--shadow);
   }
-  .card img{height:180px}
+  .card:hover{transform:none}
+  .card img{height:190px}
+  h2{font-size:22px}
 }
-
+@media(max-width:390px){
+  .actions{grid-template-columns:1fr}
+  .card img{height:170px}
+}
 </style>
 </head>
 
 <body>
-
 <div class="app">
 
-<!-- HERO ONLY -->
 <header class="hero">
-  <img src="hero-family.png" alt="USA 2026">
+  <img id="heroImg" src="hero-family.png" alt="שורפים את הירושה USA 2026">
 </header>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="#days">המסלול</a>
+  <a href="#end">סיום</a>
 </nav>
 
 <div class="title" id="days">המסלול היומי</div>
-
 <main class="cards" id="cards"></main>
 
+<footer id="end">
+  שורפים את הירושה · USA 2026<br>
+  גרסת פרימיום סופית
+</footer>
 </div>
 
 <script>
+const fallback="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80";
 
-const fallback = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80";
-
-const days = [
-["03.05","לוס אנג'לס","נחיתה והתאקלמות","Sofitel LA","20°–26°C","https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=1200&q=80"],
-["04.05","לוס אנג'לס","הוליווד","Sofitel LA","20°–26°C","https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=80"],
-["05.05","סנטה מוניקה","חוף","Sofitel LA","17°–22°C","https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"],
-["06.05","סנטה ברברה","חוף","Kimpton","15°–22°C","https://images.unsplash.com/photo-1575923825557-7d2d7f113d8e?auto=format&fit=crop&w=1200&q=80"]
+const days=[
+["03.05","לוס אנג'לס","נחיתה והתאקלמות בבוורלי הילס","Sofitel LA at Beverly Hills","בוורלי הילס התחילה כאזור חקלאי לפני שהפכה לסמל של הוליווד.","The Cheesecake Factory Beverly Hills — משפחתי, תפריט ענק, VFM נוח.","20°–26°C","https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Beverly+Hills+California"],
+["04.05","לוס אנג'לס","הוליווד, The Grove ושדרת הכוכבים","Sofitel LA at Beverly Hills","בשדרת הכוכבים יש אלפי כוכבים, אבל הכוכב האמיתי הוא מי שמוצא חניה.","Farmers Market at The Grove — הרבה דוכנים ופתרון מעולה למשפחה.","20°–26°C","https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Hollywood+Walk+of+Fame"],
+["05.05","סנטה מוניקה","חוף, מזח ווניס","Sofitel LA at Beverly Hills","מזח סנטה מוניקה הוא נקודת הסיום הסמלית של Route 66.","Bay Cities Italian Deli — סנדוויצ'ים מפורסמים וזולים יחסית.","17°–22°C","https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Santa+Monica+California","https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier"],
+["06.05","סנטה ברברה","נסיעה צפונה ועיר החוף","Kimpton Canary Hotel, Santa Barbara","סנטה ברברה מכונה American Riviera בזכות החופים והאדריכלות הספרדית.","Los Agaves — מקסיקנית פופולרית, מדורגת ו־VFM חזק.","15°–22°C","https://images.unsplash.com/photo-1560500173-eda3f6bb66b0?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Santa+Barbara+California","https://www.google.com/maps/search/?api=1&query=Santa+Barbara+California"],
+["07.05","קמבריה","כביש 1 ו־Moonstone Beach","Blue Dolphin Inn, Cambria","החוף נקרא על שם האבנים המבריקות שלאורכו.","Linn's Restaurant — מוסד מקומי, ביתי ולא פלצני.","12°–19°C","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Cambria+California","https://www.google.com/maps/search/?api=1&query=Moonstone+Beach+Cambria"],
+["08.05","כרמל ואלי","מונטריי, כרמל ו־17 Mile Drive","Little European Lodge, Carmel Valley","זה אחד מכבישי הנוף המפורסמים בקליפורניה.","Cafe Rustica — מקומי, חם, משפחתי ויחסית משתלם.","12°–21°C","https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Carmel+Valley+California","https://www.google.com/maps/search/?api=1&query=17+Mile+Drive+California"],
+["09.05","מונטריי / כרמל","יום רגוע באזור החוף","Little European Lodge, Carmel Valley","קלינט איסטווד היה בעבר ראש העיר של Carmel-by-the-Sea.","Hula's Island Grill — מנות גדולות, קליל ומשפחתי.","12°–19°C","https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Monterey+California","https://www.google.com/maps/search/?api=1&query=Monterey+California"],
+["10.05","יוסמיטי","כניסה לפארק ולינה בוואונה","The Redwoods In Yosemite","יוסמיטי השפיע על רעיון הפארקים הלאומיים בארה״ב.","Little Bear Pizza — פשוט, נוח וטוב באזור עם מבחר מוגבל.","7°–21°C","https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+National+Park"],
+["11.05","יוסמיטי","עמק יוסמיטי, מפלים ותצפיות","The Redwoods In Yosemite","Yosemite Falls הוא מהמפלים הגבוהים בצפון אמריקה.","Curry Village Pizza Deck — נוח ומשפחתי ליום פארק.","7°–21°C","https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+Valley"],
+["12.05","ברסטו","Route 66 ונסיעת מדבר","California Inn, Barstow","ברסטו הייתה תחנה חשובה על Route 66.","Lola's Kitchen — מקומי, פשוט, מדורג טוב ועושה את העבודה.","16°–31°C","https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Barstow+California","https://www.google.com/maps/search/?api=1&query=Barstow+California"],
+["13.05","לאס וגאס","הגעה לסטריפ","Park MGM Las Vegas","חלק גדול מהסטריפ נמצא באזור Paradise ולא בעיר לאס וגאס עצמה.","Eataly at Park MGM — הרבה אפשרויות ו־VFM יחסי לסטריפ.","20°–33°C","https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Park+MGM+Las+Vegas"],
+["14.05","לאס וגאס","מלונות, אטרקציות ושופינג","Park MGM Las Vegas","וגאס בנויה לגרום לך להישאר עוד לילה.","Chin Chin — קרוב ל־Park MGM, סביר ומדורג טוב.","20°–33°C","https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Strip"],
+["15.05","לאס וגאס","יום חופשי / מופע / אאוטלט","Park MGM Las Vegas","בקזינו אין תחושת זמן. הכרטיס אשראי כן מרגיש הכול.","Nacho Daddy — מנות גדולות, כיפי ו־VFM טוב.","20°–33°C","https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Premium+Outlets"],
+["16.05","ניו אורלינס","טיסה והרובע הצרפתי","Le Marais, New Orleans","ניו אורלינס נחשבת לאחד ממקומות הלידה של הג׳אז.","Verti Marte — מקומי, זול יחסית, סנדוויצ'ים ואוכל לקחת.","22°–30°C","https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=French+Quarter+New+Orleans"],
+["17.05","ניו אורלינס","French Quarter ומוזיקה","Le Marais, New Orleans","למרות השם, חלק מהאדריכלות ברובע היא דווקא ספרדית.","Oceana Grill — פופולרית, קז'ואלית ותפריט גדול.","22°–30°C","https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=Bourbon+Street+New+Orleans"],
+["18.05","וושינגטון DC","הגעה וסיבוב ערב","Hotel Hive, Washington DC","וושינגטון DC היא מחוז פדרלי ולא מדינה.","Founding Farmers — פופולרית, משפחתית ולא יוקרתית מדי.","15°–25°C","https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Washington+District+of+Columbia","https://www.google.com/maps/search/?api=1&query=National+Mall+Washington+DC"],
+["19.05","ליטיץ","פנסילבניה ועיירה קטנה","Lititz Pointe Inn and Suites","ליטיץ היא עיירה היסטורית מקסימה באזור Lancaster County.","Tomato Pie Cafe — מקומי, נעים וידידותי לכיס.","12°–23°C","https://images.unsplash.com/photo-1503435824048-a799a3a84bf7?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Lititz+Pennsylvania","https://www.google.com/maps/search/?api=1&query=Lititz+Pennsylvania"],
+["20.05","אדג'ווטר","קו הרקיע של מנהטן","Courtyard Edgewater NYC Area","אדג'ווטר נותנת נוף למנהטן בלי מחיר של מנהטן.","Mitsuwa Marketplace — מתחם יפני עם VFM מצוין.","13°–22°C","https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/Edgewater+New+Jersey","https://www.google.com/maps/search/?api=1&query=Edgewater+New+Jersey"],
+["21.05","ניו יורק","Lower East Side","Hotel Indigo Lower East Side NYC","האזור היה שער כניסה היסטורי למהגרים רבים לארה״ב.","Doughnut Plant — מתוקים מעולים בלי לפשוט רגל.","14°–23°C","https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Lower+East+Side+New+York"],
+["22.05","ניו יורק","דאונטאון, סוהו או ברוקלין","Hotel Indigo Lower East Side NYC","הסאבווי פועל 24/7 — בתיאוריה, כי תמיד יש הפתעה.","Vanessa's Dumpling House — זול, מהיר וטעים.","14°–23°C","https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=SoHo+New+York"],
+["23.05","ניו יורק","סנטרל פארק / מוזיאון / שופינג","Hotel Indigo Lower East Side NYC","סנטרל פארק נראה טבעי, אבל תוכנן בקפדנות.","Joe's Pizza — קלאסיקה ניו יורקית מהירה ומשתלמת.","14°–23°C","https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Central+Park+New+York"],
+["24.05","ניו יורק","יום אחרון מלא בעיר","Hotel Indigo Lower East Side NYC","פסל החירות היה מתנה מצרפת, התורים הם כבר אמריקה.","Katz's Delicatessen — לא הכי זול, אבל מנות ענק וחוויה.","14°–23°C","https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Katzs+Delicatessen+New+York"],
+["25.05","ניו יורק","סיום, אריזות וחזרה","Hotel Indigo Lower East Side NYC","העיר שלא ישנה לעולם עדיין דורשת צ'ק־אאוט בזמן.","Russ & Daughters / Bagel breakfast — בוקר ניו יורקי קלאסי.","14°–23°C","https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=1200&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+Lower+East+Side+New+York"]
 ];
 
-document.getElementById("cards").innerHTML = days.map((d,i)=>`
-<div class="card">
-<img src="${d[5]}" onerror="this.src='${fallback}'">
+document.getElementById("cards").innerHTML=days.map((d,i)=>`
+<article class="card">
+<img src="${d[7]}" alt="${d[1]}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
 <div class="body">
-<div class="top">
-<span class="day">יום ${i+1}</span>
-<span class="date">${d[0]}</span>
-</div>
-
-<h2>${d[1]}</h2>
-
+<div class="top"><span class="day">יום ${i+1}</span><span class="date">${d[0]}</span></div>
+<h2>${d[1]}<br>${d[2]}</h2>
 <div class="box"><strong>מלון:</strong> ${d[3]}</div>
-<div class="box"><strong>מזג אוויר:</strong> ${d[4]}</div>
-
+<div class="box"><strong>טריוויה:</strong> ${d[4]}</div>
+<div class="box"><strong>מסעדת VFM:</strong> ${d[5]}</div>
+<div class="box"><strong>מזג אוויר צפוי במאי:</strong> ${d[6]}</div>
 <div class="actions">
-<a class="btn">מפה</a>
-<a class="btn red">עוד</a>
-</div>
-
+<a class="btn" target="_blank" href="${d[8]}">תחזית חיה</a>
+<a class="btn red" target="_blank" href="${d[9]}">פתח במפה</a>
 </div>
 </div>
+</article>
 `).join("");
 
+const hero=document.getElementById("heroImg");
+hero.onerror=function(){
+  if(hero.src.includes("hero-family.png")) hero.src="HERO-FAMILY.PNG";
+  else hero.style.display="none";
+};
 </script>
-
 </body>
 </html>
