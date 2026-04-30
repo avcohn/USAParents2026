@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>שורפים את הירושה - USA 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Heebo,Arial,sans-serif;background:#e5b75b;color:#25150c}
 .app{max-width:480px;margin:auto;background:#f7d98b;min-height:100vh;border-left:4px solid #32170c;border-right:4px solid #32170c}
 .hero{padding:10px;background:#b83225}
 .hero img{width:100%;display:block;border:4px solid #32170c;border-radius:18px;box-shadow:0 7px 0 #6e2819}
-.intro,.card,.hotel{background:#fff1bd;border:3px solid #32170c;border-radius:18px;box-shadow:5px 5px 0 #7b351e}
+.intro,.card{background:#fff1bd;border:3px solid #32170c;border-radius:18px;box-shadow:5px 5px 0 #7b351e}
 .intro{margin:12px;padding:14px}
 .badge{display:inline-block;background:#1398a6;color:#fff;padding:6px 12px;border:2px solid #32170c;border-radius:999px;font-weight:900}
 h1{margin:12px 0 8px;color:#b83225;font-size:34px;line-height:1.03;text-shadow:2px 2px 0 #fff4c3,3px 3px 0 #32170c}
@@ -29,99 +30,113 @@ h2{margin:10px 0;font-size:22px;line-height:1.15}
 .box{background:#fff8db;border:2px dashed #8b4a2a;border-radius:14px;padding:9px;margin-top:8px;font-size:15px;line-height:1.45}
 .box strong{color:#b83225}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.btn.red{background:#b83225}
-.hotel{margin:10px 12px;padding:11px;font-weight:700}
 footer{text-align:center;padding:28px 14px 36px;font-weight:900}
 @media(max-width:390px){h1{font-size:30px}.actions{grid-template-columns:1fr}.card img{height:165px}}
 </style>
 </head>
+
 <body>
 <div class="app">
 
 <header class="hero">
-  <img src="hero-family.png" alt="שורפים את הירושה USA 2026">
+  <img id="heroImg" src="hero-family.png" alt="שורפים את הירושה USA 2026">
 </header>
 
 <section class="intro">
   <span class="badge">Mobile Retro Edition</span>
   <h1>שורפים את הירושה<br>USA 2026</h1>
-  <p>מסע משפחתי מחוף לחוף — עם תמונות אמיתיות של המקומות, טריוויה, מסעדות VFM, מזג אוויר צפוי במאי וכפתור לתחזית חיה.</p>
+  <p>מסע משפחתי מחוף לחוף — תמונות אמיתיות, טריוויה, מלון יומי, מסעדות VFM, מזג אוויר צפוי במאי ומפה.</p>
 </section>
 
 <nav class="nav">
-  <a href="#days">ימים</a>
-  <a href="#hotels">מלונות</a>
+  <a href="#days">המסלול</a>
+  <a href="#end">סיום</a>
 </nav>
 
 <div class="title" id="days">המסלול היומי</div>
 <main id="cards"></main>
 
-<div class="title" id="hotels">מלונות בפועל</div>
-<section id="hotelList"></section>
-
-<footer>שורפים את הירושה · USA 2026</footer>
+<footer id="end">שורפים את הירושה · USA 2026</footer>
 </div>
 
 <script>
-const fallback="https://commons.wikimedia.org/wiki/Special:FilePath/Route_66_shield.svg";
+const fallback = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80";
 
-const days=[
-["03.05","לוס אנג'לס","נחיתה והתאקלמות בבוורלי הילס","בוורלי הילס התחילה כאזור חקלאי לפני שהפכה לסמל של הוליווד.","The Cheesecake Factory Beverly Hills — משפחתי, תפריט ענק, VFM נוח.","20°–26°C","https://commons.wikimedia.org/wiki/Special:FilePath/Beverly_Hills_City_Hall.jpg","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Beverly+Hills+California"],
-["04.05","לוס אנג'לס","הוליווד, The Grove ושדרת הכוכבים","בשדרת הכוכבים יש אלפי כוכבים, אבל הכוכב האמיתי הוא מי שמוצא חניה.","Farmers Market at The Grove — הרבה דוכנים ופתרון מעולה למשפחה.","20°–26°C","https://commons.wikimedia.org/wiki/Special:FilePath/Hollywood_Walk_of_Fame.jpg","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Hollywood+Walk+of+Fame"],
-["05.05","סנטה מוניקה","חוף, מזח ווניס","מזח סנטה מוניקה הוא נקודת הסיום הסמלית של Route 66.","Bay Cities Italian Deli — סנדוויצ'ים מפורסמים וזולים יחסית.","17°–22°C","https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Monica_Pier_Entrance.jpg","https://weather.com/weather/tenday/l/Santa+Monica+California","https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier"],
-["06.05","סנטה ברברה","נסיעה צפונה ועיר החוף","סנטה ברברה מכונה American Riviera בזכות החופים והאדריכלות הספרדית.","Los Agaves — מקסיקנית פופולרית, מדורגת ו־VFM חזק.","15°–22°C","https://commons.wikimedia.org/wiki/Special:FilePath/Santa_Barbara_Courthouse.jpg","https://weather.com/weather/tenday/l/Santa+Barbara+California","https://www.google.com/maps/search/?api=1&query=Santa+Barbara+California"],
-["07.05","קמבריה","כביש 1 ו־Moonstone Beach","החוף נקרא על שם האבנים המבריקות שלאורכו.","Linn's Restaurant — מוסד מקומי, ביתי ולא פלצני.","12°–19°C","https://commons.wikimedia.org/wiki/Special:FilePath/Moonstone_Beach_Cambria.jpg","https://weather.com/weather/tenday/l/Cambria+California","https://www.google.com/maps/search/?api=1&query=Moonstone+Beach+Cambria"],
-["08.05","כרמל ואלי","מונטריי, כרמל ו־17 Mile Drive","זה אחד מכבישי הנוף המפורסמים בקליפורניה.","Cafe Rustica — מקומי, חם, משפחתי ויחסית משתלם.","12°–21°C","https://commons.wikimedia.org/wiki/Special:FilePath/17-Mile_Drive_California.jpg","https://weather.com/weather/tenday/l/Carmel+Valley+California","https://www.google.com/maps/search/?api=1&query=17+Mile+Drive+California"],
-["09.05","מונטריי / כרמל","יום רגוע באזור החוף","קלינט איסטווד היה בעבר ראש העיר של Carmel-by-the-Sea.","Hula's Island Grill — מנות גדולות, קליל ומשפחתי.","12°–19°C","https://commons.wikimedia.org/wiki/Special:FilePath/Carmel_by_the_Sea_California.jpg","https://weather.com/weather/tenday/l/Monterey+California","https://www.google.com/maps/search/?api=1&query=Monterey+California"],
-["10.05","יוסמיטי","כניסה לפארק ולינה בוואונה","יוסמיטי השפיע על רעיון הפארקים הלאומיים בארה״ב.","Little Bear Pizza — פשוט, נוח וטוב באזור עם מבחר מוגבל.","7°–21°C","https://commons.wikimedia.org/wiki/Special:FilePath/Yosemite_Valley_from_Tunnel_View.jpg","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+National+Park"],
-["11.05","יוסמיטי","עמק יוסמיטי, מפלים ותצפיות","Yosemite Falls הוא מהמפלים הגבוהים בצפון אמריקה.","Curry Village Pizza Deck — נוח ומשפחתי ליום פארק.","7°–21°C","https://commons.wikimedia.org/wiki/Special:FilePath/Yosemite_Falls_from_Yosemite_Valley.jpg","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+Valley"],
-["12.05","ברסטו","Route 66 ונסיעת מדבר","ברסטו הייתה תחנה חשובה על Route 66.","Lola's Kitchen — מקומי, פשוט, מדורג טוב ועושה את העבודה.","16°–31°C","https://commons.wikimedia.org/wiki/Special:FilePath/Route_66_Barstow_CA.jpg","https://weather.com/weather/tenday/l/Barstow+California","https://www.google.com/maps/search/?api=1&query=Barstow+California"],
-["13.05","לאס וגאס","הגעה לסטריפ","חלק גדול מהסטריפ נמצא באזור Paradise ולא בעיר לאס וגאס עצמה.","Eataly at Park MGM — הרבה אפשרויות ו־VFM יחסי לסטריפ.","20°–33°C","https://commons.wikimedia.org/wiki/Special:FilePath/Las_Vegas_Strip.jpg","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Park+MGM+Las+Vegas"],
-["14.05","לאס וגאס","מלונות, אטרקציות ושופינג","וגאס בנויה לגרום לך להישאר עוד לילה.","Chin Chin — קרוב ל־Park MGM, סביר ומדורג טוב.","20°–33°C","https://commons.wikimedia.org/wiki/Special:FilePath/Welcome_to_Fabulous_Las_Vegas_sign.jpg","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Strip"],
-["15.05","לאס וגאס","יום חופשי / מופע / אאוטלט","בקזינו אין תחושת זמן. הכרטיס אשראי כן מרגיש הכול.","Nacho Daddy — מנות גדולות, כיפי ו־VFM טוב.","20°–33°C","https://commons.wikimedia.org/wiki/Special:FilePath/Las_Vegas_at_night.jpg","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Premium+Outlets"],
-["16.05","ניו אורלינס","טיסה והרובע הצרפתי","ניו אורלינס נחשבת לאחד ממקומות הלידה של הג׳אז.","Verti Marte — מקומי, זול יחסית, סנדוויצ'ים ואוכל לקחת.","22°–30°C","https://commons.wikimedia.org/wiki/Special:FilePath/New_Orleans_French_Quarter.jpg","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=French+Quarter+New+Orleans"],
-["17.05","ניו אורלינס","French Quarter ומוזיקה","למרות השם, חלק מהאדריכלות ברובע היא דווקא ספרדית.","Oceana Grill — פופולרית, קז'ואלית ותפריט גדול.","22°–30°C","https://commons.wikimedia.org/wiki/Special:FilePath/Bourbon_Street_New_Orleans.jpg","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=Bourbon+Street+New+Orleans"],
-["18.05","וושינגטון DC","הגעה וסיבוב ערב","וושינגטון DC היא מחוז פדרלי ולא מדינה.","Founding Farmers — פופולרית, משפחתית ולא יוקרתית מדי.","15°–25°C","https://commons.wikimedia.org/wiki/Special:FilePath/Washington_Monument_Dusk_Jan_2006.jpg","https://weather.com/weather/tenday/l/Washington+District+of+Columbia","https://www.google.com/maps/search/?api=1&query=National+Mall+Washington+DC"],
-["19.05","ליטיץ","פנסילבניה ועיירה קטנה","ליטיץ היא עיירה היסטורית מקסימה באזור Lancaster County.","Tomato Pie Cafe — מקומי, נעים וידידותי לכיס.","12°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/Lititz_Pennsylvania.jpg","https://weather.com/weather/tenday/l/Lititz+Pennsylvania","https://www.google.com/maps/search/?api=1&query=Lititz+Pennsylvania"],
-["20.05","אדג'ווטר","קו הרקיע של מנהטן","אדג'ווטר נותנת נוף למנהטן בלי מחיר של מנהטן.","Mitsuwa Marketplace — מתחם יפני עם VFM מצוין.","13°–22°C","https://commons.wikimedia.org/wiki/Special:FilePath/Manhattan_skyline_from_New_Jersey.jpg","https://weather.com/weather/tenday/l/Edgewater+New+Jersey","https://www.google.com/maps/search/?api=1&query=Edgewater+New+Jersey"],
-["21.05","ניו יורק","Lower East Side","האזור היה שער כניסה היסטורי למהגרים רבים לארה״ב.","Doughnut Plant — מתוקים מעולים בלי לפשוט רגל.","14°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/Lower_East_Side_Manhattan.jpg","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Lower+East+Side+New+York"],
-["22.05","ניו יורק","דאונטאון, סוהו או ברוקלין","הסאבווי פועל 24/7 — בתיאוריה, כי תמיד יש הפתעה.","Vanessa's Dumpling House — זול, מהיר וטעים.","14°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/SoHo_New_York_City.jpg","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=SoHo+New+York"],
-["23.05","ניו יורק","סנטרל פארק / מוזיאון / שופינג","סנטרל פארק נראה טבעי, אבל תוכנן בקפדנות.","Joe's Pizza — קלאסיקה ניו יורקית מהירה ומשתלמת.","14°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/Central_Park_New_York_City_New_York_23.jpg","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Central+Park+New+York"],
-["24.05","ניו יורק","יום אחרון מלא בעיר","פסל החירות היה מתנה מצרפת, התורים הם כבר אמריקה.","Katz's Delicatessen — לא הכי זול, אבל מנות ענק וחוויה.","14°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/Statue_of_Liberty_7.jpg","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Katzs+Delicatessen+New+York"],
-["25.05","ניו יורק","סיום, אריזות וחזרה","העיר שלא ישנה לעולם עדיין דורשת צ'ק־אאוט בזמן.","Russ & Daughters / Bagel breakfast — בוקר ניו יורקי קלאסי.","14°–23°C","https://commons.wikimedia.org/wiki/Special:FilePath/Manhattan_from_Brooklyn_Bridge.jpg","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+Lower+East+Side+New+York"]
+const days = [
+["03.05","לוס אנג'לס","נחיתה והתאקלמות בבוורלי הילס","Sofitel LA at Beverly Hills","בוורלי הילס התחילה כאזור חקלאי לפני שהפכה לסמל של הוליווד.","The Cheesecake Factory Beverly Hills — משפחתי, תפריט ענק, VFM נוח.","20°–26°C","https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Beverly+Hills+California"],
+
+["04.05","לוס אנג'לס","הוליווד, The Grove ושדרת הכוכבים","Sofitel LA at Beverly Hills","בשדרת הכוכבים יש אלפי כוכבים, אבל הכוכב האמיתי הוא מי שמוצא חניה.","Farmers Market at The Grove — הרבה דוכנים ופתרון מעולה למשפחה.","20°–26°C","https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Los+Angeles+California","https://www.google.com/maps/search/?api=1&query=Hollywood+Walk+of+Fame"],
+
+["05.05","סנטה מוניקה","חוף, מזח ווניס","Sofitel LA at Beverly Hills","מזח סנטה מוניקה הוא נקודת הסיום הסמלית של Route 66.","Bay Cities Italian Deli — סנדוויצ'ים מפורסמים וזולים יחסית.","17°–22°C","https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Santa+Monica+California","https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier"],
+
+["06.05","סנטה ברברה","נסיעה צפונה ועיר החוף","Kimpton Canary Hotel, Santa Barbara","סנטה ברברה מכונה American Riviera בזכות החופים והאדריכלות הספרדית.","Los Agaves — מקסיקנית פופולרית, מדורגת ו־VFM חזק.","15°–22°C","https://images.unsplash.com/photo-1575923825557-7d2d7f113d8e?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Santa+Barbara+California","https://www.google.com/maps/search/?api=1&query=Santa+Barbara+California"],
+
+["07.05","קמבריה","כביש 1 ו־Moonstone Beach","Blue Dolphin Inn, Cambria","החוף נקרא על שם האבנים המבריקות שלאורכו.","Linn's Restaurant — מוסד מקומי, ביתי ולא פלצני.","12°–19°C","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Cambria+California","https://www.google.com/maps/search/?api=1&query=Moonstone+Beach+Cambria"],
+
+["08.05","כרמל ואלי","מונטריי, כרמל ו־17 Mile Drive","Little European Lodge, Carmel Valley","זה אחד מכבישי הנוף המפורסמים בקליפורניה.","Cafe Rustica — מקומי, חם, משפחתי ויחסית משתלם.","12°–21°C","https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Carmel+Valley+California","https://www.google.com/maps/search/?api=1&query=17+Mile+Drive+California"],
+
+["09.05","מונטריי / כרמל","יום רגוע באזור החוף","Little European Lodge, Carmel Valley","קלינט איסטווד היה בעבר ראש העיר של Carmel-by-the-Sea.","Hula's Island Grill — מנות גדולות, קליל ומשפחתי.","12°–19°C","https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Monterey+California","https://www.google.com/maps/search/?api=1&query=Monterey+California"],
+
+["10.05","יוסמיטי","כניסה לפארק ולינה בוואונה","The Redwoods In Yosemite","יוסמיטי השפיע על רעיון הפארקים הלאומיים בארה״ב.","Little Bear Pizza — פשוט, נוח וטוב באזור עם מבחר מוגבל.","7°–21°C","https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+National+Park"],
+
+["11.05","יוסמיטי","עמק יוסמיטי, מפלים ותצפיות","The Redwoods In Yosemite","Yosemite Falls הוא מהמפלים הגבוהים בצפון אמריקה.","Curry Village Pizza Deck — נוח ומשפחתי ליום פארק.","7°–21°C","https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Yosemite+National+Park+California","https://www.google.com/maps/search/?api=1&query=Yosemite+Valley"],
+
+["12.05","ברסטו","Route 66 ונסיעת מדבר","California Inn, Barstow","ברסטו הייתה תחנה חשובה על Route 66.","Lola's Kitchen — מקומי, פשוט, מדורג טוב ועושה את העבודה.","16°–31°C","https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Barstow+California","https://www.google.com/maps/search/?api=1&query=Barstow+California"],
+
+["13.05","לאס וגאס","הגעה לסטריפ","Park MGM Las Vegas","חלק גדול מהסטריפ נמצא באזור Paradise ולא בעיר לאס וגאס עצמה.","Eataly at Park MGM — הרבה אפשרויות ו־VFM יחסי לסטריפ.","20°–33°C","https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Park+MGM+Las+Vegas"],
+
+["14.05","לאס וגאס","מלונות, אטרקציות ושופינג","Park MGM Las Vegas","וגאס בנויה לגרום לך להישאר עוד לילה.","Chin Chin — קרוב ל־Park MGM, סביר ומדורג טוב.","20°–33°C","https://images.unsplash.com/photo-1581351721010-8cf859cb14a4?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Strip"],
+
+["15.05","לאס וגאס","יום חופשי / מופע / אאוטלט","Park MGM Las Vegas","בקזינו אין תחושת זמן. הכרטיס אשראי כן מרגיש הכול.","Nacho Daddy — מנות גדולות, כיפי ו־VFM טוב.","20°–33°C","https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Las+Vegas+Nevada","https://www.google.com/maps/search/?api=1&query=Las+Vegas+Premium+Outlets"],
+
+["16.05","ניו אורלינס","טיסה והרובע הצרפתי","Le Marais, New Orleans","ניו אורלינס נחשבת לאחד ממקומות הלידה של הג׳אז.","Verti Marte — מקומי, זול יחסית, סנדוויצ'ים ואוכל לקחת.","22°–30°C","https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=French+Quarter+New+Orleans"],
+
+["17.05","ניו אורלינס","French Quarter ומוזיקה","Le Marais, New Orleans","למרות השם, חלק מהאדריכלות ברובע היא דווקא ספרדית.","Oceana Grill — פופולרית, קז'ואלית ותפריט גדול.","22°–30°C","https://images.unsplash.com/photo-1597000745628-2396ba242c00?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+Orleans+Louisiana","https://www.google.com/maps/search/?api=1&query=Bourbon+Street+New+Orleans"],
+
+["18.05","וושינגטון DC","הגעה וסיבוב ערב","Hotel Hive, Washington DC","וושינגטון DC היא מחוז פדרלי ולא מדינה.","Founding Farmers — פופולרית, משפחתית ולא יוקרתית מדי.","15°–25°C","https://images.unsplash.com/photo-1501466044931-62695aada8e9?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Washington+District+of+Columbia","https://www.google.com/maps/search/?api=1&query=National+Mall+Washington+DC"],
+
+["19.05","ליטיץ","פנסילבניה ועיירה קטנה","Lititz Pointe Inn and Suites","ליטיץ היא עיירה היסטורית מקסימה באזור Lancaster County.","Tomato Pie Cafe — מקומי, נעים וידידותי לכיס.","12°–23°C","https://images.unsplash.com/photo-1503435824048-a799a3a84bf7?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Lititz+Pennsylvania","https://www.google.com/maps/search/?api=1&query=Lititz+Pennsylvania"],
+
+["20.05","אדג'ווטר","קו הרקיע של מנהטן","Courtyard Edgewater NYC Area","אדג'ווטר נותנת נוף למנהטן בלי מחיר של מנהטן.","Mitsuwa Marketplace — מתחם יפני עם VFM מצוין.","13°–22°C","https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/Edgewater+New+Jersey","https://www.google.com/maps/search/?api=1&query=Edgewater+New+Jersey"],
+
+["21.05","ניו יורק","Lower East Side","Hotel Indigo Lower East Side NYC","האזור היה שער כניסה היסטורי למהגרים רבים לארה״ב.","Doughnut Plant — מתוקים מעולים בלי לפשוט רגל.","14°–23°C","https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Lower+East+Side+New+York"],
+
+["22.05","ניו יורק","דאונטאון, סוהו או ברוקלין","Hotel Indigo Lower East Side NYC","הסאבווי פועל 24/7 — בתיאוריה, כי תמיד יש הפתעה.","Vanessa's Dumpling House — זול, מהיר וטעים.","14°–23°C","https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=SoHo+New+York"],
+
+["23.05","ניו יורק","סנטרל פארק / מוזיאון / שופינג","Hotel Indigo Lower East Side NYC","סנטרל פארק נראה טבעי, אבל תוכנן בקפדנות.","Joe's Pizza — קלאסיקה ניו יורקית מהירה ומשתלמת.","14°–23°C","https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Central+Park+New+York"],
+
+["24.05","ניו יורק","יום אחרון מלא בעיר","Hotel Indigo Lower East Side NYC","פסל החירות היה מתנה מצרפת, התורים הם כבר אמריקה.","Katz's Delicatessen — לא הכי זול, אבל מנות ענק וחוויה.","14°–23°C","https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Katzs+Delicatessen+New+York"],
+
+["25.05","ניו יורק","סיום, אריזות וחזרה","Hotel Indigo Lower East Side NYC","העיר שלא ישנה לעולם עדיין דורשת צ'ק־אאוט בזמן.","Russ & Daughters / Bagel breakfast — בוקר ניו יורקי קלאסי.","14°–23°C","https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=900&q=80","https://weather.com/weather/tenday/l/New+York+New+York","https://www.google.com/maps/search/?api=1&query=Hotel+Indigo+Lower+East+Side+New+York"]
 ];
 
-document.getElementById("cards").innerHTML=days.map((d,i)=>`
+document.getElementById("cards").innerHTML = days.map((d,i)=>`
 <article class="card">
-<img src="${d[6]}" alt="${d[1]}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
+<img src="${d[7]}" alt="${d[1]}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}'">
 <div class="body">
 <div class="top"><span class="day">יום ${i+1}</span><span class="date">${d[0]}</span></div>
 <h2>${d[1]}<br>${d[2]}</h2>
-<div class="box"><strong>טריוויה:</strong> ${d[3]}</div>
-<div class="box"><strong>מסעדת VFM:</strong> ${d[4]}</div>
-<div class="box"><strong>מזג אוויר צפוי במאי:</strong> ${d[5]}</div>
+<div class="box"><strong>מלון:</strong> ${d[3]}</div>
+<div class="box"><strong>טריוויה:</strong> ${d[4]}</div>
+<div class="box"><strong>מסעדת VFM:</strong> ${d[5]}</div>
+<div class="box"><strong>מזג אוויר צפוי במאי:</strong> ${d[6]}</div>
 <div class="actions">
-<a class="btn" target="_blank" href="${d[7]}">תחזית חיה</a>
-<a class="btn red" target="_blank" href="${d[8]}">פתח במפה</a>
+<a class="btn" target="_blank" href="${d[8]}">תחזית חיה</a>
+<a class="btn red" target="_blank" href="${d[9]}">פתח במפה</a>
 </div>
 </div>
-</article>`).join("");
+</article>
+`).join("");
 
-const hotels=[
-"03–06.05 · Sofitel LA at Beverly Hills",
-"06–07.05 · Kimpton Canary Hotel, Santa Barbara",
-"07–08.05 · Blue Dolphin Inn, Cambria",
-"08–10.05 · Little European Lodge, Carmel Valley",
-"10–12.05 · The Redwoods In Yosemite",
-"12–13.05 · California Inn, Barstow",
-"13–16.05 · Park MGM Las Vegas",
-"16–18.05 · Le Marais, New Orleans",
-"18–19.05 · Hotel Hive, Washington DC",
-"19–20.05 · Lititz Pointe Inn and Suites",
-"20–21.05 · Courtyard Edgewater NYC Area",
-"21–25.05 · Hotel Indigo Lower East Side NYC"
-];
-
-document.getElementById("hotelList").innerHTML=hotels.map(h=>`<div class="hotel">${h}</div>`).join("");
+const hero = document.getElementById("heroImg");
+hero.onerror = function(){
+  if(hero.src.includes("hero-family.png")){
+    hero.src = "HERO-FAMILY.PNG";
+  } else {
+    hero.style.display = "none";
+  }
+};
 </script>
+
 </body>
 </html>
