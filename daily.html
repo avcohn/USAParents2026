@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פירוט יומי | שורפים את הירושה</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  font-family:'Heebo',sans-serif;
+  background:#f6f8fb;
+}
+
+.hero{
+  background:#07111f;
+  color:white;
+  text-align:center;
+  padding:40px 20px 100px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:34px;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:16px;
+  color:#ddd;
+}
+
+.toolbar{
+  margin-top:-60px;
+  padding:0 15px;
+}
+
+.panel{
+  background:white;
+  border-radius:20px;
+  padding:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.search{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  margin-bottom:10px;
+}
+
+.day-nav{
+  display:flex;
+  overflow-x:auto;
+  gap:8px;
+}
+
+.day-nav button{
+  border:none;
+  background:#eee;
+  padding:8px 12px;
+  border-radius:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.day{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.day img{
+  width:100%;
+  height:230px;
+  object-fit:cover;
+}
+
+.content{
+  padding:20px;
+}
+
+.meta{
+  font-size:14px;
+  color:#777;
+  margin-bottom:8px;
+}
+
+h2{
+  margin:0 0 10px;
+}
+
+.extra{
+  margin-top:10px;
+  background:#f1f5f9;
+  padding:10px;
+  border-radius:12px;
+  font-size:14px;
+}
+
+.actions{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  flex:1;
+  text-align:center;
+  padding:10px;
+  border-radius:20px;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.map{
+  background:#07111f;
+  color:white;
+}
+
+.home{
+  background:#d7b46a;
+  color:#111;
+}
+
+@media(max-width:600px){
+  .day img{
+    height:180px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<h1>פירוט יומי</h1>
+<p>שורפים את הירושה – USA 2026</p>
+</div>
+
+<div class="toolbar">
+<div class="panel">
+<input class="search" id="searchInput" placeholder="חיפוש...">
+<div class="day-nav" id="nav"></div>
+</div>
+</div>
+
+<div class="container" id="days"></div>
+
+<script>
+const homeUrl="https://avcohn.github.io/USAParents2026/";
+
+const days=[
+{
+d:"יום 1",title:"נחיתה והוליווד",place:"לוס אנג'לס",
+text:"נחיתה, איסוף רכב וסיבוב ראשון בהוליווד.",
+trivia:"שלט Hollywood נבנה ב-1923.",
+food:"Musso & Frank Grill",
+map:"Hollywood Walk of Fame",
+img:"https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da"
+},
+{
+d:"יום 2",title:"אמנות וחופים",place:"LA",
+text:"Getty Center, Venice Beach ו-Santa Monica.",
+trivia:"Venice Beach הוא אחד המקומות הכי צבעוניים בארה\"ב.",
+food:"Gjelina",
+map:"Santa Monica Pier",
+img:"https://images.unsplash.com/photo-1580655653885-65763b2597d0"
+},
+{
+d:"יום 3",title:"כביש 1",place:"קליפורניה",
+text:"נסיעה לאורך החוף לכיוון סנטה ברברה.",
+trivia:"Santa Barbara נקראת הריביירה האמריקאית.",
+food:"The Lark",
+map:"Santa Barbara",
+img:"https://images.unsplash.com/photo-1501594907352-04cda38ebc29"
+},
+{
+d:"יום 4",title:"Big Sur",place:"כביש 1",
+text:"אחד הכבישים היפים בעולם.",
+trivia:"גשר Bixby נפתח ב-1932.",
+food:"Nepenthe",
+map:"Big Sur",
+img:"https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f"
+},
+{
+d:"יום 5",title:"יוסמיטי",place:"פארק לאומי",
+text:"כניסה לאחד הפארקים היפים בעולם.",
+trivia:"יוסמיטי הוכרז כפארק לאומי ב-1890.",
+food:"Ahwahnee Dining Room",
+map:"Yosemite",
+img:"https://images.unsplash.com/photo-1498855926480-d98e83099315"
+},
+{
+d:"יום 6",title:"וגאס",place:"לאס וגאס",
+text:"מלונות, מופעים וחיי לילה.",
+trivia:"הסטריפ לא נמצא בעיר לאס וגאס עצמה.",
+food:"Best Friend",
+map:"Las Vegas Strip",
+img:"https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d"
+},
+{
+d:"יום 7",title:"ניו אורלינס",place:"לואיזיאנה",
+text:"ג'אז ואווירה דרומית.",
+trivia:"עיר הולדת הג'אז.",
+food:"GW Fins",
+map:"French Quarter",
+img:"https://images.unsplash.com/photo-1514890547357-a9ee288728e0"
+},
+{
+d:"יום 8",title:"ניו יורק",place:"NYC",
+text:"סיום במנהטן.",
+trivia:"NY הייתה הבירה הראשונה של ארה\"ב.",
+food:"Katz's",
+map:"Times Square",
+img:"https://images.unsplash.com/photo-1485871981521-5b1fd3805eee"
+}
+];
+
+const container=document.getElementById("days");
+const nav=document.getElementById("nav");
+
+function render(){
+container.innerHTML=days.map((x,i)=>`
+<div class="day" id="d${i}">
+<img src="${x.img}" onerror="this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'">
+<div class="content">
+<div class="meta">${x.d} · ${x.place}</div>
+<h2>${x.title}</h2>
+<p>${x.text}</p>
+
+<div class="extra"><b>טריוויה:</b> ${x.trivia}</div>
+<div class="extra"><b>מסעדה:</b> ${x.food}</div>
+
+<div class="actions">
+<a class="btn map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(x.map)}">ניווט</a>
+<a class="btn home" href="${homeUrl}">חזרה לעמוד הראשי</a>
+</div>
+
+</div>
+</div>
+`).join("");
+
+nav.innerHTML=days.map((x,i)=>`<button onclick="document.getElementById('d${i}').scrollIntoView()"> ${i+1} </button>`).join("");
+}
+
+render();
+
+document.getElementById("searchInput").addEventListener("input",e=>{
+const val=e.target.value.toLowerCase();
+document.querySelectorAll(".day").forEach(d=>{
+d.style.display=d.innerText.toLowerCase().includes(val)?"block":"none";
+});
+});
+</script>
+
+</body>
+</html>
