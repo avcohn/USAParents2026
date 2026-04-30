@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שורפים את הירושה – ארה"ב 2026</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --dark:#07111f;
+      --blue:#0f2747;
+      --gold:#d8b46a;
+      --cream:#f7f2e9;
+      --text:#1f2933;
+      --muted:#6b7280;
+      --card:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:'Heebo',sans-serif;
+      background:linear-gradient(180deg,#f7f2e9 0%,#eef2f7 45%,#f8fafc 100%);
+      color:var(--text);
+    }
+
+    .hero{
+      min-height:72vh;
+      background:
+        linear-gradient(180deg,rgba(7,17,31,.35),rgba(7,17,31,.88)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80");
+      background-size:cover;
+      background-position:center;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:32px 20px;
+    }
+
+    .hero-inner{
+      max-width:980px;
+    }
+
+    .badge{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.35);
+      padding:8px 18px;
+      border-radius:999px;
+      font-size:14px;
+      letter-spacing:.5px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(8px);
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:clamp(38px,7vw,82px);
+      line-height:1;
+      margin:0;
+      font-weight:800;
+    }
+
+    .subtitle{
+      font-size:clamp(18px,3vw,28px);
+      margin:20px 0 0;
+      color:#f3ead8;
+      font-weight:300;
+    }
+
+    .hero-stats{
+      margin-top:34px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:22px;
+      padding:18px 10px;
+      backdrop-filter:blur(8px);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:24px;
+      color:var(--gold);
+    }
+
+    .stat span{
+      font-size:14px;
+      color:#f3f4f6;
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:99;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #e5e7eb;
+      overflow-x:auto;
+      white-space:nowrap;
+      padding:12px 14px;
+    }
+
+    nav a{
+      display:inline-block;
+      color:#0f2747;
+      text-decoration:none;
+      font-weight:700;
+      margin:0 6px;
+      padding:9px 14px;
+      border-radius:999px;
+      background:#f1f5f9;
+      font-size:14px;
+    }
+
+    .section{
+      max-width:1180px;
+      margin:0 auto;
+      padding:42px 18px;
+    }
+
+    .intro{
+      margin-top:-60px;
+      position:relative;
+      z-index:2;
+    }
+
+    .intro-card{
+      background:white;
+      border-radius:30px;
+      padding:30px;
+      box-shadow:0 24px 70px rgba(15,39,71,.14);
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:24px;
+      align-items:center;
+    }
+
+    .intro-card h2{
+      margin:0 0 10px;
+      color:var(--blue);
+      font-size:30px;
+    }
+
+    .intro-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    .route-box{
+      background:linear-gradient(135deg,#07111f,#0f2747);
+      color:white;
+      border-radius:24px;
+      padding:24px;
+    }
+
+    .route-box strong{
+      color:var(--gold);
+    }
+
+    .city-title{
+      margin:44px 0 20px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .city-title h2{
+      margin:0;
+      color:var(--blue);
+      font-size:30px;
+    }
+
+    .city-title span{
+      background:var(--gold);
+      color:#111827;
+      padding:6px 13px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+    }
+
+    .days{
+      display:grid;
+      gap:22px;
+    }
+
+    .day-card{
+      background:white;
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 16px 45px rgba(15,39,71,.10);
+      display:grid;
+      grid-template-columns:330px 1fr;
+      min-height:250px;
+    }
+
+    .day-img{
+      min-height:250px;
+      background-size:cover;
+      background-position:center;
+    }
+
+    .day-content{
+      padding:26px;
+    }
+
+    .day-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:12px;
+    }
+
+    .pill{
+      background:#eef2f7;
+      color:#0f2747;
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:13px;
+    }
+
+    .pill.gold{
+      background:#f4e6c5;
+      color:#6b4f12;
+    }
+
+    .day-content h3{
+      margin:0 0 10px;
+      font-size:25px;
+      color:#111827;
+    }
+
+    .day-content p{
+      margin:0 0 14px;
+      color:#4b5563;
+      line-height:1.75;
+      font-size:16px;
+    }
+
+    .hotel{
+      border-top:1px solid #edf0f4;
+      padding-top:14px;
+      color:#111827;
+      font-weight:700;
+    }
+
+    .hotel small{
+      display:block;
+      color:var(--muted);
+      font-weight:400;
+      margin-top:3px;
+    }
+
+    footer{
+      text-align:center;
+      padding:45px 20px;
+      color:#6b7280;
+      font-size:14px;
+    }
+
+    @media(max-width:800px){
+      .hero{
+        min-height:64vh;
+      }
+
+      .hero-stats{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .intro-card{
+        grid-template-columns:1fr;
+        padding:22px;
+      }
+
+      .day-card{
+        grid-template-columns:1fr;
+      }
+
+      .day-img{
+        min-height:210px;
+      }
+
+      .day-content{
+        padding:22px;
+      }
+
+      .city-title{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">USA ROADTRIP 2026</div>
+    <h1>שורפים את הירושה</h1>
+    <p class="subtitle">ארה"ב 2026 · קליפורניה · וגאס · ניו אורלינס · וושינגטון · ניו יורק</p>
+
+    <div class="hero-stats">
+      <div class="stat"><strong>23</strong><span>ימים</span></div>
+      <div class="stat"><strong>12</strong><span>מלונות</span></div>
+      <div class="stat"><strong>7</strong><span>מדינות / מחוזות</span></div>
+      <div class="stat"><strong>∞</strong><span>זיכרונות</span></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <a href="#la">לוס אנג'לס</a>
+  <a href="#coast">כביש 1</a>
+  <a href="#yosemite">יוסמיטי</a>
+  <a href="#vegas">לאס וגאס</a>
+  <a href="#nola">ניו אורלינס</a>
+  <a href="#east">החוף המזרחי</a>
+  <a href="#nyc">ניו יורק</a>
+</nav>
+
+<section class="section intro">
+  <div class="intro-card">
+    <div>
+      <h2>המסלול הגדול</h2>
+      <p>
+        מסע אמריקאי רחב, מוגזם בדיוק במידה הנכונה: מתחילים בלוס אנג'לס,
+        עולים לאורך החוף של קליפורניה, נכנסים ליוסמיטי, חוצים למדבר ולאס וגאס,
+        ואז קופצים לניו אורלינס ולחוף המזרחי עד הסיום בניו יורק.
+      </p>
+    </div>
+    <div class="route-box">
+      <strong>03.05.2026 – 25.05.2026</strong><br><br>
+      LA → Santa Barbara → Cambria → Carmel Valley → Yosemite → Barstow → Las Vegas → New Orleans → Washington DC → Lititz → Edgewater → NYC
+    </div>
+  </div>
+</section>
+
+<section class="section" id="la">
+  <div class="city-title">
+    <span>Days 1–3</span>
+    <h2>לוס אנג'לס · פתיחה הוליוודית</h2>
+  </div>
+
+  <div class="days">
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 1</span>
+          <span class="pill">03.05.2026</span>
+          <span class="pill">לוס אנג'לס</span>
+        </div>
+        <h3>נחיתה, Beverly Hills וכניסה לאווירה</h3>
+        <p>
+          יום פתיחה רגוע: הגעה, התארגנות במלון, נשימה ראשונה של קליפורניה,
+          וסיבוב ערב קל באזור Beverly Hills / West Hollywood.
+        </p>
+        <div class="hotel">
+          Sofitel LA at Beverly Hills
+          <small>03.05–06.05 · לוס אנג'לס, קליפורניה</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1580655653885-65763b2597d0?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 2</span>
+          <span class="pill">04.05.2026</span>
+          <span class="pill">Hollywood / Getty / Santa Monica</span>
+        </div>
+        <h3>הוליווד, אמנות וים</h3>
+        <p>
+          יום קלאסי של LA: שדרת הכוכבים, תיאטרון דולבי, Getty Center,
+          Venice או Santa Monica לקראת שקיעה. בדיוק היום שבו מבינים שהטיול התחיל.
+        </p>
+        <div class="hotel">
+          Sofitel LA at Beverly Hills
+          <small>לילה שני בלוס אנג'לס</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 3</span>
+          <span class="pill">05.05.2026</span>
+          <span class="pill">Malibu / Santa Monica</span>
+        </div>
+        <h3>יום חוף רגוע לפני היציאה צפונה</h3>
+        <p>
+          יום אחרון באזור לוס אנג'לס: קצב נינוח, חוף, קפה, אולי קניות קלות,
+          ואריזה לקראת העלייה על כביש 1.
+        </p>
+        <div class="hotel">
+          Sofitel LA at Beverly Hills
+          <small>לילה אחרון בלוס אנג'לס</small>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section" id="coast">
+  <div class="city-title">
+    <span>Days 4–8</span>
+    <h2>כביש 1 · קליפורניה כמו בסרט</h2>
+  </div>
+
+  <div class="days">
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 4</span>
+          <span class="pill">06.05.2026</span>
+          <span class="pill">Santa Barbara</span>
+        </div>
+        <h3>מלוס אנג'לס לסנטה ברברה</h3>
+        <p>
+          מתחילים את כביש החוף: Malibu, עצירות מול הים, ואז כניסה לסנטה ברברה —
+          עיר אלגנטית עם טיילת, State Street ואווירת קליפורניה רכה.
+        </p>
+        <div class="hotel">
+          Kimpton Canary Hotel by IHG
+          <small>06.05–07.05 · סנטה ברברה, קליפורניה</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 5</span>
+          <span class="pill">07.05.2026</span>
+          <span class="pill">Cambria</span>
+        </div>
+        <h3>סולבנג, מורו ביי וקמבריה</h3>
+        <p>
+          יום נסיעה יפהפה צפונה: אפשר לעצור בסולבנג, להמשיך למורו ביי,
+          ואז להגיע לקמבריה ול־Moonstone Beach לקראת ערב.
+        </p>
+        <div class="hotel">
+          Blue Dolphin Inn
+          <small>07.05–08.05 · קמבריה, קליפורניה</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=1200&q=80')"></div>
+      <div class="day-content">
+        <div class="day-meta">
+          <span class="pill gold">יום 6</span>
+          <span class="pill">08.05.2026</span>
+          <span class="pill">Big Sur / Carmel Valley</span>
+        </div>
+        <h3>ביג סור וכרמל ואלי</h3>
+        <p>
+          אחד הימים היפים בטיול: צוקים, גשרים, תצפיות, עצירות צילום,
+          ואז כניסה לאזור כרמל ואלי לשני לילות רגועים יותר.
+        </p>
+        <div class="hotel">
+          Little European Lodge
+          <small>08.05–10.05 · כרמל ואלי, קליפורניה</small>
+        </div>
+      </div>
+    </article>
+
+    <article class="day-card">
+      <div class="day-img" style="background-image:url('https://images.unsplash
